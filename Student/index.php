@@ -24,14 +24,14 @@
         <nav>
           <ul>
             <li><a href="index.php">HOME</a></li>
-            <li><a href="book.php">BOOKS</a></li>
+            <li><a href="books.php">BOOKS</a></li>
             <li><a href="student_login.php">Student Login</a></li>
             <li><a href="feedback.php">FEEDBACK</a></li>
           </ul>
         </nav>
 
         <div class="user-actions">
-          <a href="student_login.html">
+          <a href="student_login.php">
             <i class="fas fa-sign-in-alt"></i>
             LOGIN
           </a>
@@ -39,7 +39,7 @@
             <i class="fas fa-sign-out-alt"></i>
             LOGOUT
           </a>
-          <a href="registration.html">
+          <a href="registration.php">
             <i class="fas fa-user-plus"></i>
             SIGN UP
           </a>

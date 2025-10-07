@@ -1,3 +1,7 @@
+<?php
+include "navbar.php";
+?>
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -13,7 +17,7 @@
   </head>
   <body>
     <div class="wrapper">
-      <header>
+      <!-- <header>
         <div class="logo-container">
           <div class="logo">
             <img src="Images/logo3.png" />
@@ -23,14 +27,14 @@
 
         <nav>
           <ul>
-            <li><a href="index.html">HOME</a></li>
-            <li><a href="">BOOKS</a></li>
-            <li><a href="">FEEDBACK</a></li>
+            <li><a href="index.php">HOME</a></li>
+            <li><a href="books.php">BOOKS</a></li>
+            <li><a href="feedback.php">FEEDBACK</a></li>
           </ul>
         </nav>
 
         <div class="user-actions">
-          <a href="student_login.html">
+          <a href="student_login.php">
             <i class="fas fa-sign-in-alt"></i>
             LOGIN
           </a>
@@ -38,12 +42,12 @@
             <i class="fas fa-sign-out-alt"></i>
             LOGOUT
           </a>
-          <a href="registration.html">
+          <a href="registration.php">
             <i class="fas fa-user-plus"></i>
             SIGN UP
           </a>
         </div>
-      </header>
+      </header> -->
       <section>
         <div class="reg_img">
           <br />
