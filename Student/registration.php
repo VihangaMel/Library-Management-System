@@ -2,7 +2,10 @@
 include "connection.php";
 include "navbar.php";
 
-// Handle form submission
+// Initialize message variables
+$message = "";
+$messageClass = "";
+
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
     $fname = $_POST['firstname'];
     $lname = $_POST['lastname'];
@@ -11,7 +14,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
     $roll = $_POST['roll'];
     $email = $_POST['email'];
 
-    // Check if username already exists
+    // Check if username exists
     $stmt = $db->prepare("SELECT COUNT(*) FROM Student WHERE username = ?");
     $stmt->bind_param("s", $username);
     $stmt->execute();
@@ -26,9 +29,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
         $stmt->execute();
         $stmt->close();
 
-        echo "<script>alert('Registration successful.');</script>";
+        $message = "✅ Registration successful!";
+        $messageClass = "message-success";
     } else {
-        echo "<script>alert('The username already exists.');</script>";
+        $message = "⚠️ The username already exists.";
+        $messageClass = "message-error";
     }
 }
 ?>
@@ -36,37 +41,74 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Student Registration</title>
-    <link rel="stylesheet" href="style.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Student Registration</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <style>
+    .message-box {
+      display: none;
+      padding: 15px;
+      margin: 20px auto;
+      width: 80%;
+      text-align: center;
+      border-radius: 5px;
+      font-size: 16px;
+    }
+    .message-success {
+      background-color: #d4edda;
+      color: #155724;
+      border: 1px solid #c3e6cb;
+    }
+    .message-error {
+      background-color: #f8d7da;
+      color: #721c24;
+      border: 1px solid #f5c6cb;
+    }
+  </style>
 </head>
 <body>
-    <div class="wrapper">
-        <section>
-            <div class="reg_img">
-                <div class="box2">
-                    <h1 style="text-align: center; font-size: 35px; font-family: serif; color: white;">
-                        Library Management System
-                    </h1>
-                    <h2 style="text-align: center; font-size: 25px; color: white;">
-                        User Registration Form
-                    </h2>
-                    <form method="POST" action="">
-                        <div class="Login">
-                            <input class="form-control" type="text" name="firstname" placeholder="First Name" required><br><br>
-                            <input class="form-control" type="text" name="lastname" placeholder="Last Name" required><br><br>
-                            <input class="form-control" type="text" name="username" placeholder="Username" required><br><br>
-                            <input class="form-control" type="password" name="password" placeholder="Password" required><br><br>
-                            <input class="form-control" type="text" name="roll" placeholder="Roll No" required><br><br>
-                            <input class="form-control" type="email" name="email" placeholder="Email" required><br><br>
-                            <input class="btn btn-default" type="submit" name="submit" value="Sign Up" style="color: black; width: 70px; height: 30px;">
-                        </div>
-                    </form>
-                </div>
+  <div class="wrapper">
+    <section>
+      <div class="reg_img">
+        <div class="box2">
+          <h1 style="text-align: center; font-size: 35px; font-family: serif; color: white;">
+            Library Management System
+          </h1>
+          <h2 style="text-align: center; font-size: 25px; color: white;">
+            User Registration Form
+          </h2>
+
+          <!-- Message Box -->
+          <div id="message" class="message-box"></div>
+
+          <!-- Registration Form -->
+          <form method="POST" action="">
+            <div class="Login">
+              <input class="form-control" type="text" name="firstname" placeholder="First Name" required><br><br>
+              <input class="form-control" type="text" name="lastname" placeholder="Last Name" required><br><br>
+              <input class="form-control" type="text" name="username" placeholder="Username" required><br><br>
+              <input class="form-control" type="password" name="password" placeholder="Password" required><br><br>
+              <input class="form-control" type="text" name="roll" placeholder="Roll No" required><br><br>
+              <input class="form-control" type="email" name="email" placeholder="Email" required><br><br>
+              <input class="btn btn-default" type="submit" name="submit" value="Sign Up" style="color: black; width: 70px; height: 30px;">
             </div>
-        </section>
-    </div>
+          </form>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <?php if (!empty($message)): ?>
+    <script>
+      document.addEventListener("DOMContentLoaded", function() {
+        const msgBox = document.getElementById("message");
+        msgBox.classList.add("<?php echo $messageClass; ?>");
+        msgBox.textContent = "<?php echo $message; ?>";
+        msgBox.style.display = "block";
+      });
+    </script>
+  <?php endif; ?>
 </body>
 </html>
