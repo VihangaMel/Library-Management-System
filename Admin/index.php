@@ -23,9 +23,9 @@
 
         <nav>
           <ul>
-            <li><a href="index.html">HOME</a></li>
-            <li><a href="">BOOKS</a></li>
-            <li><a href="">FEEDBACK</a></li>
+            <li><a href="index.php">HOME</a></li>
+            <li><a href="book.php">BOOKS</a></li>
+            <li><a href="feedback.php">FEEDBACK</a></li>
           </ul>
         </nav>
 
