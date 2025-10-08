@@ -13,6 +13,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
     $password = $_POST['password'];
     $roll = $_POST['roll'];
     $email = $_POST['email'];
+    $contact = $_POST['contact'];
 
     // Check if username exists
     $stmt = $db->prepare("SELECT COUNT(*) FROM Student WHERE username = ?");
@@ -24,8 +25,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
 
     if ($count == 0) {
         // Insert new user
-        $stmt = $db->prepare("INSERT INTO Student (firstname, lastname, username, password, roll, email) VALUES (?, ?, ?, ?, ?, ?)");
-        $stmt->bind_param("ssssss", $fname, $lname, $username, $password, $roll, $email);
+        $stmt = $db->prepare("INSERT INTO Student (firstname, lastname, username, password, roll, email, contact) VALUES (?, ?, ?, ?, ?, ?, ?)");
+        $stmt->bind_param("sssssss", $fname, $lname, $username, $password, $roll, $email, $contact);
         $stmt->execute();
         $stmt->close();
 
@@ -92,6 +93,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
               <input class="form-control" type="password" name="password" placeholder="Password" required><br><br>
               <input class="form-control" type="text" name="roll" placeholder="Roll No" required><br><br>
               <input class="form-control" type="email" name="email" placeholder="Email" required><br><br>
+              <input class="form-control" type="contact" name="contact" placeholder="Contact" required><br><br>
               <input class="btn btn-default" type="submit" name="submit" value="Sign Up" style="color: black; width: 70px; height: 30px;">
             </div>
           </form>

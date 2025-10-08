@@ -46,7 +46,10 @@ session_start();
             ?>
           </div>
           <div>
-
+            <a href="student.php" style="color: #d5e0e0; text-decoration: none; margin-right: 20px;">
+              <i class="fas fa-user-plus"></i>
+              STUDENTS
+            </a>
             <a href="logout.php" style="color: #d5e0e0; text-decoration: none;">
               <i class="fas fa-sign-out-alt"></i>
               LOGOUT

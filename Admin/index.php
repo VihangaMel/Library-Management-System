@@ -14,6 +14,11 @@ session_start();
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
+    <style>
+      body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      }
+    </style>
   </head>
   <body>
     <div class="wrapper">
@@ -33,6 +38,7 @@ session_start();
             <li><a href="index.php">HOME</a></li>
             <li><a href="books.php">BOOKS</a></li>
             <li><a href="feedback.php">FEEDBACK</a></li>
+            <li><a href="student.php">STUDENTS</a></li>
             <li><a href="logout.php">Log out</a></li>
           </ul>
         </nav>
