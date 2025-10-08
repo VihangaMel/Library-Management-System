@@ -6,35 +6,28 @@ include "navbar.php";
 $message = "";
 $messageClass = "";
 
-if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
-    $fname = $_POST['firstname'];
-    $lname = $_POST['lastname'];
-    $username = $_POST['username'];
-    $password = $_POST['password'];
-    $email = $_POST['email'];
-    $contact = $_POST['contact'];
+if (isset($_POST['submit'])) {
+  $username = mysqli_real_escape_string($db, $_POST['username']);
+  $password = mysqli_real_escape_string($db, $_POST['password']);
 
-    // Check if username exists
-    $stmt = $db->prepare("SELECT COUNT(*) FROM Admin WHERE username = ?");
-    $stmt->bind_param("s", $username);
-    $stmt->execute();
-    $stmt->bind_result($count);
-    $stmt->fetch();
-    $stmt->close();
+  $res = mysqli_query($db, "SELECT * FROM `admin` WHERE username='$username' AND password='$password';");
+  $count = mysqli_num_rows($res);
 
-    if ($count == 0) {
-        // Insert new user (do NOT include id)
-        $stmt = $db->prepare("INSERT INTO Admin (firstname, lastname, username, password, email, contact) VALUES (?, ?, ?, ?, ?, ?)");
-        $stmt->bind_param("ssssss", $fname, $lname, $username, $password, $email, $contact);
-        $stmt->execute();
-        $stmt->close();
+  if ($count == 0) {
+    $message = "⚠️ The username and password don't match.";
+    $messageClass = "message-error";
+  } else {
+    $_SESSION['login_user'] = $username;
+    $message = "✅ Login successful! Redirecting...";
+    $messageClass = "message-success";
 
-        $message = "✅ Registration successful!";
-        $messageClass = "message-success";
-    } else {
-        $message = "⚠️ The username already exists.";
-        $messageClass = "message-error";
-    }
+    // Delay redirect to show message
+    echo "<script>
+      setTimeout(function() {
+        window.location.href = 'index.php';
+      }, 1500);
+    </script>";
+  }
 }
 ?>
 
@@ -43,7 +36,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Admin Registration</title>
+  <title>Student Login</title>
   <link rel="stylesheet" href="style.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <style>
@@ -71,29 +64,31 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
 <body>
   <div class="wrapper">
     <section>
-      <div class="reg_img">
-        <div class="box2">
+      <div class="stdLogin_img">
+        <div class="box1">
           <h1 style="text-align: center; font-size: 35px; font-family: serif; color: white;">
             Library Management System
           </h1>
           <h2 style="text-align: center; font-size: 25px; color: white;">
-            User Registration Form
+            User Login Form
           </h2>
 
           <!-- Message Box -->
           <div id="message" class="message-box"></div>
 
-          <!-- Registration Form -->
-          <form method="POST" action="">
+          <!-- Login Form -->
+          <form name="Login" action="" method="post">
             <div class="Login">
-              <input class="form-control" type="text" name="firstname" placeholder="First Name" required><br><br>
-              <input class="form-control" type="text" name="lastname" placeholder="Last Name" required><br><br>
               <input class="form-control" type="text" name="username" placeholder="Username" required><br><br>
               <input class="form-control" type="password" name="password" placeholder="Password" required><br><br>
-              <input class="form-control" type="email" name="email" placeholder="Email" required><br><br>
-              <input class="form-control" type="contact" name="contact" placeholder="Contact" required><br><br>
-              <input class="btn btn-default" type="submit" name="submit" value="Sign Up" style="color: black; width: 70px; height: 30px;">
+              <input class="btn btn-default" type="submit" name="submit" value="Login" style="color: black; width: 70px; height: 30px;">
             </div>
+
+            <p style="color: white; padding-left: 10px">
+              <br><br>
+              <a style="color: white" href="#">Forgot password?</a> &nbsp;&nbsp;&nbsp; New to this website?
+              <a style="color: white" href="registration.php">Sign Up</a>
+            </p>
           </form>
         </div>
       </div>

@@ -58,7 +58,7 @@ session_start();
           ?>
 
           <div class="user-actions">
-            <a href="student_login.php">
+            <a href="admin_login.php">
               <i class="fas fa-sign-in-alt"></i>
               LOGIN
             </a>

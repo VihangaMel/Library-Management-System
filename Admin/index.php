@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -21,28 +25,48 @@
           <h1>ONLINE LIBRARY MANAGEMENT SYSTEM</h1>
         </div>
 
-        <nav>
+        <?php
+        if(isset($_SESSION['login_user'])){
+          ?>
+          <nav>
           <ul>
             <li><a href="index.php">HOME</a></li>
-            <li><a href="book.php">BOOKS</a></li>
+            <li><a href="books.php">BOOKS</a></li>
+            <li><a href="feedback.php">FEEDBACK</a></li>
+            <li><a href="logout.php">Log out</a></li>
+          </ul>
+        </nav>
+        <?php
+        }
+        else{
+          ?>
+          <nav>
+          <ul>
+            <li><a href="index.php">HOME</a></li>
+            <li><a href="books.php">BOOKS</a></li>
+            <!-- <li><a href="admin_login.php">Student Login</a></li> -->
             <li><a href="feedback.php">FEEDBACK</a></li>
           </ul>
         </nav>
-
         <div class="user-actions">
-          <a href="student_login.html">
+          <a href="admin_login.php">
             <i class="fas fa-sign-in-alt"></i>
             LOGIN
           </a>
-          <a href="">
+          <!-- <a href="logout.php">
             <i class="fas fa-sign-out-alt"></i>
             LOGOUT
-          </a>
-          <a href="registration.html">
+          </a> -->
+          <a href="registration.php">
             <i class="fas fa-user-plus"></i>
             SIGN UP
           </a>
         </div>
+        <?php
+        }
+        ?>
+
+        
       </header>
       <section>
         <div class="section_img">
@@ -93,5 +117,8 @@
         </p>
       </footer>
     </div>
+    <?php 
+    include "footer.php";
+    ?>
   </body>
 </html>
