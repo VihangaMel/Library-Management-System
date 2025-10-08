@@ -17,7 +17,6 @@ if (isset($_POST['submit'])) {
     $message = "⚠️ The username and password don't match.";
     $messageClass = "message-error";
   } else {
-    session_start();
     $_SESSION['login_user'] = $username;
     $message = "✅ Login successful! Redirecting...";
     $messageClass = "message-success";

@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -27,20 +31,44 @@
           </ul>
         </nav>
 
-        <div class="user-actions">
-          <a href="student_login.php">
-            <i class="fas fa-sign-in-alt"></i>
-            LOGIN
-          </a>
-          <a href="">
-            <i class="fas fa-sign-out-alt"></i>
-            LOGOUT
-          </a>
-          <a href="registration.php">
-            <i class="fas fa-user-plus"></i>
-            SIGN UP
-          </a>
-        </div>
+        <?php
+        if(isset($_SESSION['login_user']))
+        {
+          ?>
+          <div style="color: #d5e0e0; text-decoration: none; font-size: 18px; ">
+            <?php
+            echo "Welcome ".$_SESSION['login_user'];
+            ?>
+          </div>
+          <div>
+
+            <a href="logout.php" style="color: #d5e0e0; text-decoration: none;">
+              <i class="fas fa-sign-out-alt"></i>
+              LOGOUT
+            </a>
+          </div>        
+          <?php
+        }
+        else{
+          ?>
+
+          <div class="user-actions">
+            <a href="student_login.php">
+              <i class="fas fa-sign-in-alt"></i>
+              LOGIN
+            </a>
+            <!-- <a href="">
+              <i class="fas fa-sign-out-alt"></i>
+              LOGOUT
+            </a> -->
+            <a href="registration.php">
+              <i class="fas fa-user-plus"></i>
+              SIGN UP
+            </a>
+          </div>
+          <?php
+        }
+        ?>
       </header>
 </body>
 </html>

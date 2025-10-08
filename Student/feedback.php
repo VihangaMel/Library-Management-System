@@ -10,6 +10,7 @@ include "navbar.php";
     <title>Feedback</title>
     <style type="text/css">
         body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-image: url("Images/feedback.png");
             background-size: cover;
         }
@@ -60,6 +61,7 @@ include "navbar.php";
             color: #fff;
         }
         </style>
+        
 </head>
 <body>
     <div class="wrapper">
