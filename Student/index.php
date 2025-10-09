@@ -114,13 +114,6 @@ session_start();
           </div>
         </div>
       </section>
-      <footer>
-        <br />
-        <p style="text-align: center">
-          Email: library.management@gmail.com<br /><br />
-          Mobile: +9471*******
-        </p>
-      </footer>
     </div>
     <?php 
     include "footer.php";

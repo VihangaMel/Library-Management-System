@@ -45,17 +45,16 @@ session_start();
             if(isset($_SESSION['pic']))
             {
               // For students, use their profile picture
-              echo "<img src='images/".$_SESSION['pic']."' style='width:40px; height:40px; border-radius:50%; margin-right:10px; object-fit:cover;'>";
+              echo "<a href='profile.php' style='display: flex; align-content: center; align-items: center; color: #d5e0e0; text-decoration: none;'><img src='images/".$_SESSION['pic']."' style='width:40px; height:40px; border-radius:50%; margin-right:10px; object-fit:cover;'>";
               echo "  ".$_SESSION['login_user'];
             }
             else
             {
-              echo "Welcome ".$_SESSION['login_user'];
+              echo "Welcome ".$_SESSION['login_user']."</a>";
             }
             ?>
           </div>
           <div>
-
             <a href="logout.php" style="color: #d5e0e0; text-decoration: none;">
               <i class="fas fa-sign-out-alt"></i>
               LOGOUT

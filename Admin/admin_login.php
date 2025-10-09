@@ -88,7 +88,7 @@ if (isset($_POST['submit'])) {
 
             <p style="color: white; padding-left: 10px">
               <br><br>
-              <a style="color: white" href="#">Forgot password?</a> &nbsp;&nbsp;&nbsp; New to this website?
+              <a style="color: white" href="update_password.php">Forgot password?</a> &nbsp;&nbsp;&nbsp; New to this website?
               <a style="color: white" href="registration.php">Sign Up</a>
             </p>
           </form>

@@ -6,23 +6,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-    <style type="test/css">
+    <style type="text/css">
         footer
         {
             height:100px;
             width:100%;
             background-color:darkcyan;
         }
+        .social-icon{
+            text-align: center;
+        }
         .fa 
         {
-            margin: 0px 500px;
+            margin: 0px 5px;
             padding: 5px;
             font-size:20px;
             width: 20px;
             height: 20px;
             text-align: center;
             text-decoration: none;
-            border-radius: 50px;
+            border-radius: 50%;
         }
         .fa:hover
         {
@@ -56,23 +59,27 @@
     </style>
 </head>
 <body>
-    <footer style="background-color=black;">
+    <footer style="text-aalin: center; background-color: darkcyan;">
         <br>
-        <h3 style="text-align: center;">Contact us through social media.</h3><br>
-
-        <div style="margin:0px 550px;">
-        <a href="#" class="fa fa-facebook"></a>
-        <a href="#" class="fa fa-twitter"></a>
-        <a href="#" class="fa fa-google"></a>
-        <a href="#" class="fa fa-instagram"></a>
-        <a href="#" class="fa fa-yahoo"></a>
+        <div>
+            <h3 style="text-align: center;">Contact us through social media </h3><br>
         </div>
-        <br><br>
-        <p  style="text-align:center;">
+        <div class="social-icon" style="display: flex; justify-content: center; margin:0px 0px;">
+            <a href="#" class="fa fa-facebook"></a>
+            <a href="#" class="fa fa-twitter"></a>
+            <a href="#" class="fa fa-google"></a>
+            <a href="#" class="fa fa-instagram"></a>
+            <a href="#" class="fa fa-yahoo"></a>
+        </div>
+        <br>
+        <div>
+            <p  style="text-align:center;">
 			<br>
 			Email: library.management@gmail.com<br><br>
 			Mobile: +9471*******
 		</p>
+        </div>
+        <br>
     </footer>
     
 
