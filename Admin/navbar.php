@@ -40,9 +40,10 @@ session_start();
         if(isset($_SESSION['login_user']))
         {
           ?>
-          <div style="color: #d5e0e0; text-decoration: none; font-size: 18px; ">
+          <div style="display: flex; align-content: center; color: #d5e0e0; text-decoration: none; font-size: 18px; align-items: center; ">
             <?php
-            echo "Welcome ".$_SESSION['login_user'];
+            echo "<img src='images/".$_SESSION['pic']."'  style='width:40px; height:40px; border-radius:50%; margin-right:10px; object-fit:cover;'>";
+            echo "  ".$_SESSION['login_user'];
             ?>
           </div>
           <div>

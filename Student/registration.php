@@ -25,8 +25,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
 
     if ($count == 0) {
         // Insert new user
-        $stmt = $db->prepare("INSERT INTO Student (firstname, lastname, username, password, roll, email, contact) VALUES (?, ?, ?, ?, ?, ?, ?)");
-        $stmt->bind_param("sssssss", $fname, $lname, $username, $password, $roll, $email, $contact);
+        $profile_picture = 'p.jpg'; // Default profile picture
+        $stmt = $db->prepare("INSERT INTO Student (firstname, lastname, username, password, email, contact, profile_picture) VALUES (?, ?, ?, ?, ?, ?, ?)");
+        $stmt->bind_param("sssssss", $fname, $lname, $username, $password, $email, $contact, $profile_picture);
         $stmt->execute();
         $stmt->close();
 

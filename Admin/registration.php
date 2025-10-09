@@ -24,8 +24,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
 
     if ($count == 0) {
         // Insert new user (do NOT include id)
-        $stmt = $db->prepare("INSERT INTO Admin (firstname, lastname, username, password, email, contact) VALUES (?, ?, ?, ?, ?, ?)");
-        $stmt->bind_param("ssssss", $fname, $lname, $username, $password, $email, $contact);
+        $profile_picture = 'p.jpg'; // Assign to variable
+        $stmt = $db->prepare("INSERT INTO Admin (firstname, lastname, username, password, email, contact, profile_picture) VALUES (?, ?, ?, ?, ?, ?, ?)");
+        $stmt->bind_param("sssssss", $fname, $lname, $username, $password, $email, $contact, $profile_picture);
         $stmt->execute();
         $stmt->close();
 

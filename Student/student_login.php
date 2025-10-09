@@ -17,7 +17,9 @@ if (isset($_POST['submit'])) {
     $message = "⚠️ The username and password don't match.";
     $messageClass = "message-error";
   } else {
+    $row = mysqli_fetch_assoc($res);
     $_SESSION['login_user'] = $username;
+    $_SESSION['pic'] = $row['profile_picture'];
     $message = "✅ Login successful! Redirecting...";
     $messageClass = "message-success";
 

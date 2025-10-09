@@ -11,6 +11,7 @@ if (isset($_POST['submit'])) {
   $password = mysqli_real_escape_string($db, $_POST['password']);
 
   $res = mysqli_query($db, "SELECT * FROM `admin` WHERE username='$username' AND password='$password';");
+  $row = mysqli_fetch_assoc($res);
   $count = mysqli_num_rows($res);
 
   if ($count == 0) {
@@ -18,6 +19,7 @@ if (isset($_POST['submit'])) {
     $messageClass = "message-error";
   } else {
     $_SESSION['login_user'] = $username;
+    $_SESSION['pic'] = $row['profile_picture'];
     $message = "✅ Login successful! Redirecting...";
     $messageClass = "message-success";
 
