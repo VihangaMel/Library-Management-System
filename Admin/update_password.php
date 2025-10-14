@@ -9,9 +9,44 @@ include "navbar.php";
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Change Password</title>
+    <style type="text/css">
+        body
+        {
+            height: 650px;
+            background-image: url("Images/password.jpg");
+            background-repeat: no-repeat;
+        }
+        .wrapper
+        {
+            width: 400px;
+            height: 400px;
+            margin:100px auto;
+            background-color: yellow;
+            opacity: .7;
+            color: black;
+            padding: 27px 15px;
+        }
+        .form-control
+        {
+           width: 300px; 
+        }
+    </style>
 </head>
 <body>
+    <div class="wrapper">
+        <div style="text-align: center;">
+        <h1 style="text-align: center; font-size: 20px; font-family:Lucida Console;">Change Your Password</h1> 
+        </div>
 
+        <div style="padding-left: 30px">
+        <form action="" method="post">
+            <input type="text" name="username" class="form-control" placeholder="Username" required=""><br>
+            <input type="text" name="email" class="form-control" placeholder="Email" required=""><br>
+            <input type="text" name="password" class="form-control" placeholder="new Password" required=""><br>
+            <button class="btn btn-default" type="submit" name="submit">Update</button>
+        </form>
+        </div>
+    </div>
 
     <?php
     if(isset($_POST['submit'])){
