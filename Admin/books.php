@@ -285,6 +285,26 @@ include "navbar.php";
     }
     echo "</table>";
     }
+
+    if(isset($_POST['submit1'])){
+        if(isset($_SESSION['login_user'])){
+            mysqli_query($db,"DELETE from book where bid='$_POST[bid]';")
+            ?>
+
+            <script>
+                alert("Delete successfully.")
+            </script>
+            <?php
+        }
+        else{
+            ?>
+            <script type="text/javascript">
+                alert("You need to log first.")
+            </script>
+            
+            <?php
+        }
+    }
     ?>
 </body>
 </html>

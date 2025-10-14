@@ -137,7 +137,24 @@ include "navbar.php";
             </div>
 
             <?php 
-            
+            if(isset($_POST['submit'])){
+                if(isset($_SESSION['login_user'])){
+                    mysqli_query($db,"INSERT INTO book VALUE ('$_POST[bid]','$_POST[name]','$_POST[authors]','$_POST[edition]','$_POST[status]','$_POST[quantity]','$_POST[department]');");
+                    ?>
+                    <script type="text/javascript">
+                        alert("Book added successfully.")
+                    </script>
+
+                    <?php
+                }
+                else{
+                    ?>
+                    <script type="text/javascript">
+                        alert("You need to log first.")
+                    </script>
+                    <?php
+                }
+            }
             ?>
         </div>
 
